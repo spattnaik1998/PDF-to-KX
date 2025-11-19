@@ -54,6 +54,68 @@ Knowledge Graph Construction (NetworkX)
 Visualization (Pyvis) + API Export (JSON)
 ```
 
+## PDF Parsing
+
+The `app/pdf_utils.py` module provides robust text extraction from PDF documents using PyMuPDF (fitz). It includes multiple extraction methods and comprehensive error handling.
+
+### Features
+
+- **Full Text Extraction**: Extract all text from a PDF as a single string
+- **Page-by-Page Extraction**: Extract text while preserving page boundaries
+- **Metadata Extraction**: Get page numbers along with text content
+- **PDF Validation**: Verify files are valid, readable PDFs
+- **Error Handling**: Custom exceptions for clear error messages
+- **PDF Info**: Retrieve document metadata (title, author, page count, file size)
+
+### Available Functions
+
+```python
+from app.pdf_utils import (
+    extract_text_from_pdf,
+    extract_text_by_page,
+    extract_pages_with_metadata,
+    validate_pdf,
+    get_pdf_info
+)
+
+# Extract all text from a PDF
+text = extract_text_from_pdf("document.pdf")
+print(f"Extracted {len(text)} characters")
+
+# Extract text by page (returns list of strings)
+pages = extract_text_by_page("document.pdf")
+print(f"Document has {len(pages)} pages")
+
+# Extract with page metadata (returns list of dicts)
+pages_with_meta = extract_pages_with_metadata("document.pdf")
+for page in pages_with_meta:
+    print(f"Page {page['page_number']}: {len(page['text'])} chars")
+
+# Validate a PDF file
+if validate_pdf("document.pdf"):
+    print("Valid PDF")
+
+# Get PDF metadata
+info = get_pdf_info("document.pdf")
+print(f"Title: {info['title']}, Pages: {info['page_count']}")
+```
+
+### Error Handling
+
+The module uses custom `PDFExtractionError` exceptions for clear error reporting:
+
+- `FileNotFoundError`: When the PDF file doesn't exist
+- `PDFExtractionError`: When the PDF is corrupted or cannot be processed
+- `ValueError`: When invalid parameters are provided
+
+### Implementation Details
+
+- Uses PyMuPDF (fitz) for reliable PDF parsing
+- Text is extracted using `get_text("text")` method for clean, plain text
+- Pages are joined with double newlines (`\n\n`) for readability
+- All file paths are validated before processing
+- Documents are properly closed after extraction to prevent resource leaks
+
 ## Installation
 
 1. Clone the repository
