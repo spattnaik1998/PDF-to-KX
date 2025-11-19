@@ -1,0 +1,36 @@
+# Web Framework & API
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# UI
+streamlit==1.31.0
+
+# PDF Processing
+PyMuPDF==1.23.21
+
+# AI/ML - OpenAI
+openai==1.10.0
+
+# AI/ML - Hugging Face
+transformers==4.37.0
+torch==2.1.2
+accelerate==0.26.1
+
+# Embeddings & Similarity
+sentence-transformers==2.3.1
+scikit-learn==1.4.0
+
+# Graph Processing
+networkx==3.2.1
+
+# Graph Visualization
+pyvis==0.3.2
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.6.0
+pydantic-settings==2.1.0
+
+# Optional: Progress bars and utilities
+tqdm==4.66.1

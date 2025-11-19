@@ -1,0 +1,160 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE - VSCode
+.vscode/
+*.code-workspace
+
+# IDE - PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDE - Other
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# ML Models & Cache
+models/
+*.pt
+*.pth
+*.bin
+*.onnx
+.transformers_cache/
+.cache/
+huggingface/
+
+# Sentence Transformers Cache
+.sentence_transformers/
+
+# OpenAI/API Keys (extra safety)
+*_api_key*
+credentials.json
+secrets.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# PDF uploads and outputs
+uploads/
+output/
+*.pdf
+!docs/*.pdf
+!examples/*.pdf
+
+# Graph outputs
+*.html
+graphs/
+visualizations/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# FastAPI/Uvicorn
+.uvicorn/
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# macOS
+*.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*~
+
+# Compressed files
+*.zip
+*.tar.gz
+*.rar
+
+# Documentation builds
+docs/_build/
+site/
