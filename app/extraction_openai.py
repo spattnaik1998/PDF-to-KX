@@ -27,8 +27,20 @@ from openai import OpenAI, APIError, RateLimitError, APIConnectionError
 from app.config import settings, DEFAULT_MODEL_OPENAI
 
 
-# Initialize OpenAI client
-client = OpenAI(api_key=settings.openai_api_key)
+# Lazily initialized — not created at import time so the app starts without a key.
+_client: Optional[OpenAI] = None
+
+
+def _get_client() -> OpenAI:
+    global _client
+    if _client is None:
+        if not settings.openai_api_key:
+            raise ValueError(
+                "OPENAI_API_KEY is not configured. "
+                "Add it to your .env file or switch to the REBEL engine."
+            )
+        _client = OpenAI(api_key=settings.openai_api_key)
+    return _client
 
 
 # Pydantic models for structured output
@@ -125,7 +137,7 @@ Return a complete knowledge graph with entities and their relationships."""
 
     try:
         # Call OpenAI API with structured output
-        completion = client.beta.chat.completions.parse(
+        completion = _get_client().beta.chat.completions.parse(
             model=model,
             messages=[
                 {"role": "system", "content": EXTRACTION_SYSTEM_PROMPT},

@@ -29,7 +29,7 @@ Example usage:
 """
 
 from typing import List, Dict, Set, Tuple, Optional
-from openai import OpenAI
+from openai import OpenAI  # noqa: F401 — used in type hint above
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics.pairwise import cosine_similarity
@@ -37,8 +37,21 @@ from collections import defaultdict
 from app.config import settings
 
 
-# Initialize OpenAI client
-client = OpenAI(api_key=settings.openai_api_key)
+# Lazily initialized OpenAI client — not created at import time so the app
+# can start without a key configured (REBEL-only mode).
+_client: Optional[OpenAI] = None
+
+
+def _get_client() -> OpenAI:
+    global _client
+    if _client is None:
+        if not settings.openai_api_key:
+            raise ValueError(
+                "OPENAI_API_KEY is required for entity deduplication. "
+                "Add it to your .env file or use a pre-deduplicated pipeline."
+            )
+        _client = OpenAI(api_key=settings.openai_api_key)
+    return _client
 
 
 def embed_labels(
@@ -88,7 +101,7 @@ def embed_labels(
         batch = non_empty_labels[i:i + batch_size]
 
         try:
-            response = client.embeddings.create(
+            response = _get_client().embeddings.create(
                 input=batch,
                 model=model
             )
