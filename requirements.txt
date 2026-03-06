@@ -27,10 +27,17 @@ networkx==3.2.1
 # Graph Visualization
 pyvis==0.3.2
 
+# Analytics & Visualization
+plotly==5.18.0
+pandas==2.1.4
+
+# Export
+openpyxl==3.1.2
+
 # Utilities
 python-dotenv==1.0.0
 pydantic==2.6.0
 pydantic-settings==2.1.0
 
-# Optional: Progress bars and utilities
+# Progress bars
 tqdm==4.66.1

@@ -126,7 +126,7 @@ visualizations/
 
 # Streamlit
 .streamlit/secrets.toml
-.streamlit/config.toml
+
 
 # macOS
 *.DS_Store
