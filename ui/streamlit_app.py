@@ -6,8 +6,15 @@ visualization, analytics, and multi-format export.
 
 import json
 import os
+import sys
 import tempfile
 from typing import Dict, List, Optional
+
+# Ensure the project root is on sys.path so `app.*` is importable
+# regardless of the working directory when Streamlit is launched.
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
 
 import streamlit as st
 import streamlit.components.v1 as components
